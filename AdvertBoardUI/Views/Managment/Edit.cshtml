@@ -1,0 +1,34 @@
+﻿<script id="editAdvert" type="text/x-kendo-template">
+    <div id="editAdvertisement">
+        <div class="filter__form">
+            <div class="filter__form--line">
+                <label>
+                    Заголовок
+                </label>
+                <input type="text" data-bind="value: model.Title" />
+            </div>
+            <div class="filter__form--line">
+                <label>
+                    Дата публикации
+                </label>
+                <input type="text" class="datepicker" data-bind="value: model.PublishDate" />
+            </div>
+            <div class="filter__form--line">
+                <label>
+                    Цена
+                </label>
+                <input type="text" data-bind="value: model.Price" />
+            </div>
+            <div class="filter__form--line">
+                <label>
+                    Описание
+                </label>
+                <textarea data-bind="value: model.Text" id="editor"></textarea>
+            </div>
+            <div class="filter__form--line">
+                <input type="button" value="Сохранить" data-bind="click: saveAdvert" />
+                <input type="button" value="Отмена" data-bind="click: cancelEdit" />
+            </div>
+        </div>
+    </div>
+</script>

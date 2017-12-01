@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Доска объявлений</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/appStyle")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/appJsCore")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body class="container">
+<header id="header">
+    <div class="container">
+        <div class="navbar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @*@Html.ActionLink("Доска объявлений", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                    @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }).ToHtmlString().Replace("[replacetext]", "<div class='logo'></div><span>Доска объявлений</span>"))
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav categories">
+                        <!--ko foreach: categories-->
+                        <li><a href="javascript: void(0);" data-bind="text: categoryName"></a></li>
+                        <!--/ko-->
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                    <span class="btn btn_search" data-bind="click: searchAdvert()">Подать объявление</span>
+                </div>
+        </div>
+        <div class="header_bottom">
+            <select class="selectpicker">
+                <!--ko foreach: categories-->
+                <option class="main_category" data-bind="text: categoryName, value: categoryID"></option>
+                <optgroup>
+                    <!--ko if: hasSubCategory-->
+                    <!--ko foreach: subCategories -->
+                    <option data-bind="text: subCategoryName, value: categoryID"></option>
+                    <!--/ko-->
+                    <!--/ko-->
+                </optgroup>
+                <!--/ko-->
+            </select>
+            <input type="text" class="search" />
+            <select class="selectpicker">
+                <!--ko foreach: regionsAll-->
+                <option class="main_category" data-bind="text: name"></option>
+                <!--/ko-->
+            </select>
+            <span class="btn btn_search" data-bind="click: searchAdvert()">Найти</span>
+        </div>
+    </div>
+</header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class='logo'></div>
+            <p>&copy; @DateTime.Now.Year - Доска объявлений <br> Все права защищены
+            </p>
+            <div class="support_info">
+                <span></span>
+                <span class="phone_number"></span>
+            </div>
+            <div class="social_info">
+                <a href="javascript:void(0)" class="social twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" class="social vk"><i class="fa fa-vk" aria-hidden="true"></i></a>
+                <a href="javascript:void(0)" class="social facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </div>
+            <span class="counter">001</span>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        $(ko.applyBindings(BaseVM, $('#header')[0]));
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

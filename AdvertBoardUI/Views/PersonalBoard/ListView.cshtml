@@ -1,0 +1,52 @@
+﻿<script id="advertList" type="text/x-kendo-template">
+    <div id="userAdvertisementsBoard">
+        <div class="page__wrapper">
+            <div class="page__row">
+                <input type="button" value="Добавить" data-bind="click: addAdvert"/>
+            </div>
+            <div class="page__column">
+                <div class="filter__form">
+                    <div class="filter__form--line">
+                        <label>Заголовок</label>
+                        <input type="text" data-bind="value: filter.title"/>
+                    </div>
+                    <div class="filter__form--line">
+                        <label>Текст</label>
+                        <input type="text" data-bind="value: filter.text"/>
+                    </div>
+                    <div class="filter__form--line">
+                        <label>Цена</label>
+                        <input type="text" placeholder="от" data-bind="value: filter.startPrice"/>
+                        <input type="text" placeholder="до" data-bind="value: filter.endPrice"/>
+                    </div>
+                    <div class="filter__form--line">
+                        <label>Дата публикации</label>
+                        с <input type="text" class="datepicker" data-bind="value: filter.startDate"/>
+                        по <input type="text" class="datepicker" data-bind="value: filter.endDate"/>
+                    </div>
+                    <div class="filter__form--line">
+                        <input type="button" value="Найти" data-bind="click: searchAdverts"/>
+                        <input type="button" value="Очистить" data-bind="click: clearFilter"/>
+                    </div>
+                </div>
+            </div>
+            <div class="page__column">
+                <div id="advertlistView">
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="advert-item" type="text/x-kendo-template">
+    <div class="listview__item">
+        <div class="listview__item__header">
+            #: Title #
+        </div>
+        <div class="listview__item__text">
+            #: Text #
+        </div>
+        <div class="listview__item__price">
+            #: Price #
+        </div>
+    </div>
+</script>

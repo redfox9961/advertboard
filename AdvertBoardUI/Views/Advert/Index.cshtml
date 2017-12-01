@@ -1,0 +1,23 @@
+﻿@model List<BusinessLogic.Model.Dtos.AdvertDto>
+@{
+    ViewBag.Title = "Объявления";
+}
+
+<div class="jumbotron">
+    <h1>Список объявлений</h1>
+</div>
+
+<table>
+    <tr>
+        <th>Заголовок</th>
+        <th>Текст</th>
+    </tr>
+    @foreach (var advert in Model)
+    {
+        <tr>
+            <td>@advert.Title</td>
+            <td>@advert.Text</td>
+        </tr>
+    }
+
+</table>
